@@ -11,11 +11,11 @@ Si es la primera vez usando git lo instalamos en: https://git-scm.com/download/w
 git init
 ```
 
-Despues ejecuta el comando
+Después ejecuta el comando
 ```
 git clone https://github.com/angelfeli98/cloudpython.git
 ```
-Esto creara una carpeta que es una copia del repositorio en tu computadora.
+Esto creará una carpeta que es una copia del repositorio en tu computadora.
 
 
 Ejecuta el siguiente comando 
@@ -24,7 +24,7 @@ Ejecuta el siguiente comando
 git remote add SD https://github.com/angelfeli98/cloudpython.git
 ```
 
-Unavez que terminando de trabajar ejecuta los siguientes comandos, todos dentro de la carpeta del proyecto
+Una vez que terminando de trabajar ejecuta los siguientes comandos, todos dentro de la carpeta del proyecto
 
 ```
 git add .
@@ -43,15 +43,15 @@ git push SD master
 ```
 
 
-### Para demas ocaciones que trabajes el proyecto
+### Para demás ocasiones que trabajes el proyecto
 
-Colocate dentro de la carpeta del proyecto y actualiza tu repositorio local 
+Colócate dentro de la carpeta del proyecto y actualiza tu repositorio local 
  
 ```
 git pull SD
 ```
 
-Unavez que terminando de trabajar ejecuta los siguientes comandos, todos dentro de la carpeta del proyecto
+Una vez que terminando de trabajar ejecuta los siguientes comandos, todos dentro de la carpeta del proyecto
 
 ```
 git add .
@@ -68,5 +68,8 @@ y por ultimo
 ```
 git push SD master
 ```
+
+
+
 
 
