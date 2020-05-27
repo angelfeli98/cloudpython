@@ -3,10 +3,27 @@
 Proyecto para aplicaciones distribuidas
 
 ### Guia para usar el repositorio:
+
 Si es la primera vez usando git lo instalamos en: https://git-scm.com/download/win
 
+Crea tu cuenta en GitHub https://github.com/
 
-### Si es la primera vez usando el repositorio ejecuta:
+Agrega tu usuario y contraseña a la configuracion de git 
+
+```
+git config --global user.name "your username"
+
+git config --global user.password "your password"
+```
+
+
+### Si es la primera vez usando el repositorio :
+
+Mandame tu correo para agregarte como colaborador en el proyecto
+
+Asegurate de estar en ruta donde quieres que se descargue el repositorio
+
+Una vez estes como colaborador ejecuta en bash de git 
 ```
 git init
 ```
