@@ -8,7 +8,7 @@ Si es la primera vez usando git lo instalamos en: https://git-scm.com/download/w
 
 Crea tu cuenta en GitHub https://github.com/
 
-Agrega tu usuario y contraseña a la configuracion de git 
+Agrega tu usuario y contraseña a la configuracion de git usando el bash de git
 
 ```
 git config --global user.name "your username"
@@ -23,7 +23,7 @@ Mandame tu correo para agregarte como colaborador en el proyecto
 
 Asegurate de estar en ruta donde quieres que se descargue el repositorio
 
-Una vez estes como colaborador ejecuta en bash de git 
+Una vez estes como colaborador ejecuta en el bash de git 
 ```
 git init
 ```
