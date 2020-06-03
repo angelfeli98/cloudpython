@@ -57,6 +57,32 @@
 		margin: 0em auto;
 		width: 1200px;
 	}
+
+    .main-project-container{
+		display: block;
+        float:none;
+        overflow: hidden;
+		margin: 0em 5em 0em 5em;
+	}
+
+    .container-proyecto-left
+	{
+		display: inline-block;
+        float: left;
+        overflow: hidden;
+		margin: 0em auto;
+		width: 65%;
+	}
+
+    .container-proyecto-right
+	{
+		display: inline-block;
+        float: right;
+        overflow: hidden;
+		margin: 0em auto;
+        padding: 0em 0em 0em 0em;
+		width: 30%;
+	}
 	
 /*********************************************************************************/
 /* Image Style                                                                   */
@@ -239,7 +265,7 @@
 		float: right;
 	}
 
-/*********************************************************************************/
+/*******FCON**************************************************************************/
 /* 2-column                                                                      */
 /*********************************************************************************/
 
@@ -273,10 +299,21 @@
 	{
 		font-size: 2.7em;
 	}
+
+    .title h3
+	{
+		font-size: 2.2em;
+	}
 	
 	.title .byline
 	{
 		font-size: 1.3em;
+		color: rgba(255,255,255,0.60);
+	}
+
+    .title .byline-2
+	{
+		font-size: 1em;
 		color: rgba(255,255,255,0.60);
 	}
 
@@ -532,5 +569,11 @@
 	{
 		text-align: center;
 		color: rgba(0,0,0,.5);
+	}
+
+    #container-proyecto-right .title h2
+	{
+		font-weight: bold;
+		color: red;
 	}
 
