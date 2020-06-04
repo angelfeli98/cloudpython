@@ -129,7 +129,7 @@ python manage.py sqlmigrate nombreApp version
  ```
  Donde version la puedes ver en la carptea Migrations 
 
- Dspues 
+ Despues 
   ```
 python manage.py migrate 
   ```
