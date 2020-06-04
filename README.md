@@ -86,7 +86,52 @@ y por ultimo
 git push SD master
 ```
 
+## GUIA PARA EJECUTAR EL PROYECTO DE DJANGO
 
+Verificar que este instalado python en tu equipo 
 
+```
+python --version 
+```
+Deberias de tener el siguiente resultado
+
+```
+Python "version"
+```
+
+De no ser asi descargarlo en https://www.python.org/
+
+Una vez descargado e instalado ejecutamos 
+
+```
+pip install Django
+```
+
+Para ejecutar correr el proyecto no colocamos donde se encuentre el archivo manage.py
+
+Ejecutamos 
+
+```
+python manage.py runserver
+```
+
+## GUIA SI VAS A MODIFICAR LOS MODELOS DE LA BASE DE DATOS 
+
+Una vez modificados los modelos ejecutamos 
+
+```
+python manage.py makemigrations 
+```
+Despues 
+
+ ```
+python manage.py sqlmigrate nombreApp version
+ ```
+ Donde version la puedes ver en la carptea Migrations 
+
+ Dspues 
+  ```
+python manage.py migrate 
+  ```
 
 
