@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from proyectos import views as proyecto
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name = 'admin'),
+    path('', proyecto.index , name = "index"), 
+    path('proyectos-destacados/', proyecto.proyectos, name = 'proyectos')
+
 ]
