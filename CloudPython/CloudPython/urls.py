@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from proyectos import views as proyecto
+from usuarios import views as user
 
 urlpatterns = [
     path('admin/', admin.site.urls, name = 'admin'),
     path('', proyecto.index , name = "index"), 
-    path('proyectos-destacados/', proyecto.proyectos, name = 'proyectos')
-
+    path('proyectos-destacados/', proyecto.proyectos, name = 'proyectos'),
+    path('register/', user.signup, name = 'register'),
 ]

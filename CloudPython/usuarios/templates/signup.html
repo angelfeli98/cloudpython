@@ -1,0 +1,35 @@
+
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html>
+<header>
+    <link href={% static 'css/signup_estilos.css'%} rel="stylesheet" type="text/css" media="all" />
+    <title>Registro | Found.me</title>
+</header>
+<body>
+
+<div id="id01" class="modal">
+  <form class="modal-content" action="/action_page.php">
+    <div class="container">
+      <h1>Formato de registro</h1>
+      <hr>
+      
+      
+
+      <p>Al crear una cuenta en esta plataforma aceptas nuestros <a href="condiciones.html" style="color:dodgerblue">Terminos & Condiciones de privacidad</a>.</p>
+
+      <div class="clearfix">
+		<button id="clickMe" type="button" value="clickme" onclick="cancel_signup();" class="cancelbtn">Cancelar</button>
+		<!-- <button onclick="window.location.href='/index.html'" class="cancelbtn">Cancelar</button> -->
+        <button type="submit" href="EUREKA.html" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
+
