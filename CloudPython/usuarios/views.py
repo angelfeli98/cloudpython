@@ -34,9 +34,13 @@ def guardarUsuarios(request):
         )
 
         item.save()
+        flag = item
 
-        return HttpResponse("Usuario Guardado")
+        return render(request, 'signup-su.html', {
+            'User' : flag
+        })
     except:
         return HttpResponse("Error")
+
 
     

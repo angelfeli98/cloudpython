@@ -6,12 +6,24 @@
 <!DOCTYPE html>
 <html>
 <header>
-    <link href={% static 'css/signup_estilos.css'%} rel="stylesheet" type="text/css" media="all" />
+    <link href={% static 'css/user.css'%} rel="stylesheet" type="text/css" media="all" />
     <title>Bienvenido | Found.me</title>
 </header>
 <body>
+    <div id = "header">
+    </div>
     <div>
-        <h1>Bienvenido {{ User.user }}</h1>
+        <div class="title container" id = "wrapper">
+            <h2>Bienvenido {{ User.name }}</h2>
+            <p>Ahora puedes apoyar cientos de proyectos o puedes crear el tuyo</p>
+            <p>Se te han asignado ${{ User.wallet }} para que apoyes los proyectos que quieras</p>
+        </div>
+        <div class = "center">
+            <form action = "{% url 'index' %}" method = "POST">
+                {% csrf_token %}
+                <button class = "button button-alt" type = "submit">Comienza a apoyar</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

@@ -24,4 +24,5 @@ urlpatterns = [
     path('proyectos-destacados/', proyecto.proyectos, name = 'proyectos'),
     path('register/', user.signup, name = 'register'),
     path('register-user/', user.guardarUsuarios, name = 'Guardar'),
+    
 ]
