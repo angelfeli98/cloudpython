@@ -31,6 +31,21 @@ button {
   opacity: 0.9;
 }
 
+.warn{
+  width: 100%;
+  height: 30px;
+  padding-top: 7px;
+  align-items: center;
+  position: relative;
+  background-color: #f58c84;
+  border: 1px ;
+  margin: 0px auto;
+}
+
+.warn strong{
+  left: 50%;
+}
+
 input[type = "file"] {
     width: 0.1px;
     height: 0.1px;
