@@ -16,6 +16,12 @@
     <div class="container">
       <h1>Formato de registro</h1>
       <hr>
+        {% if message %}
+          <div class = "warn">
+            <strong>{{message}}</strong><br>
+          </div>
+        {% endif %}
+      
       {% csrf_token %}
       {{ form }}
 
