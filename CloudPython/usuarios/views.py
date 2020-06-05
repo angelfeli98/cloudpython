@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from usuarios.forms import UsuariosForm 
+from usuarios.forms import UsuariosForm, LoginUser 
 from proyectos import templates
 import random
 from usuarios.models import User
@@ -44,8 +44,9 @@ def guardarUsuarios(request):
         
         f = Fernet(key)
         passwordb = password.encode()
-
         passwdencry = f.encrypt(passwordb)
+        print(key)
+        
 
         item = User(
             user = user,
@@ -61,8 +62,65 @@ def guardarUsuarios(request):
         return render(request, 'signup-su.html', {
             'User' : flag
         })
+    except Exception as e:
+        form = UsuariosForm()
+        return render(request, 'signup.html', {
+                'form' : form,
+                'message' : "Usuario o Contraseña ya utilizada" 
+            })
+
+
+def login(request):
+    form = LoginUser()
+    return render(request, 'login.html',{
+        'form' : form
+    })  
+
+def loge(request):
+
+    try:
+        user = request.POST['user']
+        password = request.POST['password']
+
+        user_ver = User.objects.filter(user = user)
+        
+        if not (user_ver):
+            bandera = False
+        else:
+            file = open('key.key', 'rb+')
+            key = file.read()
+            file.close()
+        
+            f = Fernet(key)
+            passwordd = f.decrypt(user_ver[0].password).decode()
+            if passwordd == password:
+                return render(request, 'index.html', {
+                    'User' : user_ver[0]
+                })
+            else:
+                form = LoginUser()
+                message = "Usuario o Contraseña incorrecto"
+                return render(request, 'login.html', {
+                    'form' : form,
+                    'message': message
+                })   
     except:
-        return HttpResponse("Error")
+        return HttpResponse("ERROR")
+    return HttpResponse("Login")
 
 
-    
+def indexUser(request):
+    if request.POST:
+        user = User(request.POST)
+
+    return render(request, 'index.html', {
+        'User' : user
+    })
+
+def proyectosUser(request):
+    if request.GET:
+        user = User(request.GET)
+
+    return render(request, 'proyectos.html', {
+        'User' : user
+    })

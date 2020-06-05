@@ -13,5 +13,9 @@ def proyectos(request):
 
     return render(request, 'proyectos.html')
 
+def proyecto(request):
+
+    return render(request, 'proyect.html')
+
         
 

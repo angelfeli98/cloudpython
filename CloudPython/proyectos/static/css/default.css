@@ -14,7 +14,13 @@
 		color: #FFF;
 	}
 	
-	
+	#navi:hover{
+		background: #2651a8;
+		border-radius: 6px;
+		color: rgba(255,255,255,1);
+	}
+
+
 	h1, h2, h3
 	{
 		margin: 0;

@@ -1,19 +1,15 @@
 
-{% load static %}
+{% extends 'forms.html' %}
 
+{% block title %}
+    Register
+{% endblock  %}
 
-
-<!DOCTYPE html>
-<html>
-<header>
-    <link href={% static 'css/signup_estilos.css'%} rel="stylesheet" type="text/css" media="all" />
-    <title>Registro | Found.me</title>
-</header>
-<body>
-
-<div id="id01" class="modal">
-  <form class="modal-content" method = "POST" action = "{% url 'Guardar' %}">
-    <div class="container">
+{% block method %}
+    {% url 'Guardar' %}
+{% endblock  %}
+    
+{% block content %}
       <h1>Formato de registro</h1>
       <hr>
         {% if message %}
@@ -32,10 +28,4 @@
 		<!-- <button onclick="window.location.href='/index.html'" class="cancelbtn">Cancelar</button> -->
         <button type="submit" action = "{% url 'index' %}" class="signupbtn">Sign Up</button>
       </div>
-    </div>
-  </form>
-</div>
-
-</body>
-</html>
-
+{% endblock  %}

@@ -43,4 +43,18 @@ class UsuariosForm(forms.Form):
         )
     )
 
-    
+class LoginUser(forms.Form):
+    user = forms.EmailField(
+        label = "Correo:",
+        max_length = 50, 
+        required=True,
+    )
+
+    password = forms.CharField(
+        label = "Contraseña",
+        widget = forms.PasswordInput(
+            attrs = {
+               "autocomplete" : "new-password"
+           }
+        )
+    )

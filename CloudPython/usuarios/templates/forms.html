@@ -1,0 +1,26 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html>
+<header>
+    <link href={% static 'css/signup_estilos.css'%} rel="stylesheet" type="text/css" media="all" />
+    <title>{% block title %}
+    {% endblock  %}| Found.me</title>
+</header>
+<body>
+
+<div id="id01" class="modal">
+  <form class="modal-content" method = "POST" action = "{% block method %}
+  {% endblock  %}">
+    <div class="container">
+     
+        {% block content %}
+        {% endblock  %}
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

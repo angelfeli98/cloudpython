@@ -1,0 +1,32 @@
+
+
+{% extends 'forms.html' %}
+
+{% block title %}
+    Login
+{% endblock  %}
+
+{% block method %}
+    {% url 'loged' %}
+{% endblock  %}
+
+{% block content %}
+      <h1>Bienvenido de vuelta</h1>
+      <hr>
+        {% if message %}
+          <div class = "warn">
+            <strong>{{message}}</strong><br>
+          </div>
+        {% endif %}
+        {% csrf_token %}
+        {{form}}
+      <p><a href="recuperar_pwd.html" style="color:dodgerblue">Recuperar contraseña</a>.</p>
+
+      <div class="clearfix">
+		<button id="clickMe" type="button" value="clickme" onclick="cancel_signup();" class="cancelbtn">Cancelar</button>
+		<!-- <button onclick="window.location.href='/index.html'" class="cancelbtn">Cancelar</button> -->
+        <button type="submit" href="EUREKA.html" class="signupbtn">Entrar</button>
+      </div>
+
+{% endblock  %}
+    

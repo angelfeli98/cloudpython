@@ -38,11 +38,16 @@ Released   : 20140330
 		</div>
 		<div id="menu">
 			<ul>
-				<li class="active"><a href="{% url 'index' %}" accesskey="1" title="">Homepage</a></li>
-				<li><a href="{% url 'proyectos' %}" accesskey="3" title="">Proyectos</a></li>
-				<li><a href="{% url 'register' %}" accesskey="2" title="">Registrate</a></li>
-				<li><a href="login.html" accesskey="4" title="">Login</a></li>
-				<li><a href="#" accesskey="5" title="">Contactanos</a></li>
+				<li><a id = "navi" href="{% url 'index' %}" accesskey="1" title="">Homepage</a></li>
+				<li><a id = "navi" href="{% if User %}{% url 'proyectosLoged' %}?{{User}}{% else %}{% url 'proyectos' %}{% endif %}" accesskey="3" title="">Proyectos</a></li>
+				{% if User %}
+					<li><a id = "navi" href="{% url 'index' %}" accesskey="1" title="">Tus Proyectos</a></li>
+					<li><a id = "navi" href="{% url 'proyectos' %}" accesskey="3" title="">Perfil</a></li>
+				{% else %}
+					<li><a id = "navi" href="{% url 'register' %}" accesskey="2" title="">Registrate</a></li>
+					<li><a id = "navi" href="{% url 'login' %}" accesskey="4" title="">Login</a></li>
+				{% endif %}
+				<li><a id = "navi" href="#" accesskey="5" title="">Contactanos</a></li>
 			</ul>
 		</div>
 	</div>
@@ -50,6 +55,8 @@ Released   : 20140330
 	{% endblock  %}
 </div>
 {% block content %}
+
+
 {% endblock  %}
 
 <div id="copyright" class="container">
