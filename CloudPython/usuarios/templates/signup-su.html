@@ -1,0 +1,17 @@
+
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html>
+<header>
+    <link href={% static 'css/signup_estilos.css'%} rel="stylesheet" type="text/css" media="all" />
+    <title>Bienvenido | Found.me</title>
+</header>
+<body>
+    <div>
+        <h1>Bienvenido {{ User.user }}</h1>
+    </div>
+</body>
+</html>
