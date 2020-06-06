@@ -31,6 +31,13 @@ Released   : 20140330
 
 </head>
 <body>
+{% if messages %}
+	<div class = "wellcome">
+	{% for message in messages %}
+			<p class "wellcomep">{{message}}</p>
+	{% endfor %}
+	</div>
+{% endif %}
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
@@ -38,11 +45,11 @@ Released   : 20140330
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a id = "navi" href="{% url 'index' %}" accesskey="1" title="">Homepage</a></li>
+				<li><a id = "navi" href="{% if User %}{% url 'indexLoged' %}?{{User}}{% else %}{% url 'proyectos' %}{% endif %}" accesskey="1" title="">Homepage</a></li>
 				<li><a id = "navi" href="{% if User %}{% url 'proyectosLoged' %}?{{User}}{% else %}{% url 'proyectos' %}{% endif %}" accesskey="3" title="">Proyectos</a></li>
 				{% if User %}
-					<li><a id = "navi" href="{% url 'index' %}" accesskey="1" title="">Tus Proyectos</a></li>
-					<li><a id = "navi" href="{% url 'proyectos' %}" accesskey="3" title="">Perfil</a></li>
+					<li><a id = "navi" href="{% url 'tusproyectos' %}?{{User}}" accesskey="1" title="">Tus Proyectos</a></li>
+					<li><a id = "navi" href="{% url 'proyectos' %}?{{User}}" accesskey="3" title="">Perfil</a></li>
 				{% else %}
 					<li><a id = "navi" href="{% url 'register' %}" accesskey="2" title="">Registrate</a></li>
 					<li><a id = "navi" href="{% url 'login' %}" accesskey="4" title="">Login</a></li>
@@ -58,7 +65,6 @@ Released   : 20140330
 
 
 {% endblock  %}
-
 <div id="copyright" class="container">
 	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
 </div>

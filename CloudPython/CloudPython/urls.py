@@ -29,4 +29,8 @@ urlpatterns = [
     path('loged/', user.loge, name = 'loged'),
     path('loge/', user.indexUser, name = 'indexLoged'),
     path('proyects-des', user.proyectosUser, name = 'proyectosLoged'),
+    path('proyect-loged/', user.proyectoUser, name = 'proyectoLoged'),
+    path('your-proyects/', proyecto.yourProyects, name = 'tusproyectos'),
+    path('register-proyec/', proyecto.newproyect, name = 'newproyect'),
+    path('save-proyect/', proyecto.savePoryect, name = 'saveproyecto'),
 ]

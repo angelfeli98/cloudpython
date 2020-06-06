@@ -1,0 +1,24 @@
+
+{% extends 'forms.html' %}
+
+{% block title %}
+    New Proyect
+{% endblock  %}
+
+{% block method %}
+    {% url 'saveproyecto' %}
+{% endblock  %}
+
+{% block content %}
+    <h1>Registra tu proyecto</h1>
+    <hr>
+    
+    {% csrf_token %}
+    {{form.media}}
+    {{form.as_p}}
+    <div class="clearfix">
+		<button id="clickMe" type="button" value="clickme" onclick="cancel_signup();" class="cancelbtn">Cancelar</button>
+		<!-- <button onclick="window.location.href='/index.html'" class="cancelbtn">Cancelar</button> -->
+        <button type="submit"  class="signupbtn">Registar</button>
+    </div>
+{% endblock  %}

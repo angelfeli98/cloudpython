@@ -4,6 +4,11 @@ from proyectos import templates
 import random
 from usuarios.models import User
 from cryptography.fernet import Fernet
+from django.contrib import messages
+from rest_framework.views import APIView
+from django.core.mail import send_mail
+from django.http.request import QueryDict
+
 
 
 
@@ -45,7 +50,6 @@ def guardarUsuarios(request):
         f = Fernet(key)
         passwordb = password.encode()
         passwdencry = f.encrypt(passwordb)
-        print(key)
         
 
         item = User(
@@ -55,15 +59,24 @@ def guardarUsuarios(request):
             photo = photo,
             wallet = wallet
         )
-
+        send_mail(
+            'WELLCOME TO FOUND.ME',
+            'AHORA ERES PARTE DE UNA COMUNIDAD QUE BUSCA HACER LOS SUEÑOS REALIDAD',
+            'founde.me@gmail.com',
+            [user],
+            fail_silently=False,
+        )
         item.save()
+        form.clean()
         flag = item
-
+        form = UsuariosForm()
         return render(request, 'signup-su.html', {
-            'User' : flag
+            'User' : flag,
+            'form' : form
         })
     except Exception as e:
         form = UsuariosForm()
+        print(type(e).__name__)
         return render(request, 'signup.html', {
                 'form' : form,
                 'message' : "Usuario o Contraseña ya utilizada" 
@@ -94,15 +107,15 @@ def loge(request):
             f = Fernet(key)
             passwordd = f.decrypt(user_ver[0].password).decode()
             if passwordd == password:
+                messages.success(request,'Bienvenido de nuevo')
                 return render(request, 'index.html', {
-                    'User' : user_ver[0]
+                    'User' : user_ver[0],
                 })
             else:
                 form = LoginUser()
                 message = "Usuario o Contraseña incorrecto"
                 return render(request, 'login.html', {
-                    'form' : form,
-                    'message': message
+                    'form' : form
                 })   
     except:
         return HttpResponse("ERROR")
@@ -112,7 +125,11 @@ def loge(request):
 def indexUser(request):
     if request.POST:
         user = User(request.POST)
-
+        request.POST = None
+    elif request.GET:
+        user = User(request.GET)
+        request.GET.clean()
+    print(request)
     return render(request, 'index.html', {
         'User' : user
     })
@@ -120,7 +137,15 @@ def indexUser(request):
 def proyectosUser(request):
     if request.GET:
         user = User(request.GET)
-
+        request.GET.clean()
     return render(request, 'proyectos.html', {
+        'User' : user
+    })
+
+def proyectoUser(request):
+    if request.GET:
+        user = User(request.GET)
+        request.GET.clean()
+    return render(request, 'proyect.html', {
         'User' : user
     })

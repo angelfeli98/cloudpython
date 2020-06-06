@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'proyectos',
-    'usuarios'
+    'usuarios',
+    'rest_framework',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,13 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+############ email ###############3
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'founde.me@gmail.com'
+EMAIL_HOST_PASSWORD = 'angelFOUNDME123+'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True

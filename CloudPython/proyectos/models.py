@@ -1,5 +1,6 @@
 from django.db import models
 from usuarios.models import User
+from datetime import datetime
 
 # Create your models here.
 class Category(models.Model):
@@ -7,13 +8,14 @@ class Category(models.Model):
     description = models.CharField(max_length=100)
     made = models.DateTimeField(auto_now_add = True)
     upload = models.DateTimeField(auto_now = True)
-    models.ImageField(default = 'null', upload_to = "Categories")
+    image = models.ImageField(default = 'null', upload_to = "Categories")
 
 
 class Proyect(models.Model):
     name = models.CharField(max_length=50)
     goal = models.FloatField()
     actual = models.FloatField()
+    deadline = models.DateTimeField(auto_now_add=False)
     description = models.CharField(max_length=1500)
     image = models.ImageField(default = 'null', upload_to = "Proyects")
     made = models.DateTimeField(auto_now_add = True)
