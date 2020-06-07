@@ -10,14 +10,18 @@
     <div class = "headerP">
         <h1>Tus ideas, tus metas</h1>
         {% if proyects %}
+            {% for proyect in proyects %}
+                <div class = "procontainer">
+                    <a class = "proyectlink" href ="{% url 'newproyect' User%}">MONITORIZAR<a/>
+                </div>
+            {% endfor %}
         {% else %}
         <h1>Todavia no tienes ningun proyecto</h1>
         <h3>No esperes para compartir tus ideas</h3>
         {% endif %}
     </div>
     <div id = "linkP">
-        <a class = "proyectlink" href ="{% url 'newproyect' %}?{{User}}">Crea un proyecto<a/>
+        <a class = "proyectlink" href ="{% url 'newproyect' User%}">Crea un proyecto<a/>
+        
     </div>
-    
-    
 {% endblock  %}

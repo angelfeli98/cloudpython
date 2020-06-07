@@ -6,13 +6,12 @@
 {% endblock  %}
 
 {% block method %}
-    {% url 'saveproyecto' %}
+    {% url 'saveproyecto' User%}
 {% endblock  %}
 
 {% block content %}
     <h1>Registra tu proyecto</h1>
     <hr>
-    
     {% csrf_token %}
     {{form.media}}
     {{form.as_p}}

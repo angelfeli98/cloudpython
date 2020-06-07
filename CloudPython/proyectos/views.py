@@ -10,30 +10,46 @@ def index(request):
        
     return render(request, 'index.html')
 
-def proyectos(request):
+def proyectos(request, User = ''):
 
-    return render(request, 'proyectos.html')
+    return render(request, 'proyectos.html',{
+        'User' : User 
+    })
 
 def proyecto(request):
 
     return render(request, 'proyect.html')
 
-def yourProyects(request):
+def yourProyects(request, User):
+    aux = ''
+    for letra in User:
+        if letra.isdigit():
+            aux += letra
+
+    userOwner_id = int(aux) 
+    proyects = Proyect.objects.filter(userOwner_id = userOwner_id)
     if request.GET:
         user = request.GET
     return render(request, 'yourproyects.html', {
-        'User' : user
+        'User' : User,
+        'proyects' : proyects
     })
 
-def newproyect(request):
+def newproyect(request, User):
     form = ProyectoSave()
-    user = request.GET.keys()
+    
     return render(request, 'newproyect.html', {
         'form' : form,
-        'User' : user
+        'User' : User
     })
 
-def savePoryect(request):
+def savePoryect(request, User):
+    aux = ''
+    for letra in User:
+        if letra.isdigit():
+            aux += letra
+
+    userOwner_id = int(aux) 
 
     if request.POST:
         try:
@@ -44,10 +60,8 @@ def savePoryect(request):
             image = request.POST['image']
             category_id  = request.POST['category']
             actual = 0
-            userOwner_id = 4
             deadline = datetime.strptime(deadline, '%Y-%m-%d').date()
-            print(type(deadline))
-            print(deadline)
+        
 
             data = Proyect(
                 name = name,  
@@ -61,10 +75,19 @@ def savePoryect(request):
             )
 
             data.save()
+
+            proyects = Proyect.objects.filter(userOwner_id = userOwner_id,)
             
-            return HttpResponse('SALVADO')
+            return render(request, 'yourproyects.html', {
+                'User' : User,
+                'proyects' : proyects
+            })
         except Exception as e:
-            return HttpResponse(type(e).__name__)
+            form = ProyectoSave()
+            return render(request, 'newproyect.html', {
+                'form' : form,
+                'User' : User
+            })
 
 
     else:

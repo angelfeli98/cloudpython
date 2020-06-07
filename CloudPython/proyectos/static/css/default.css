@@ -20,6 +20,20 @@
 		color: rgba(255,255,255,1);
 	}
 
+	.proyectlink{
+		display: table;
+		margin: 0 auto;	
+		margin: 0px 0px 0px 875px;
+	}
+
+	.procontainer{
+		width: 100%;
+	}
+
+	div .aux{
+		width: 40px;
+	}
+
 	body.wellcome{
 		
 		font-family: Arial, Helvetica, sans-serif;

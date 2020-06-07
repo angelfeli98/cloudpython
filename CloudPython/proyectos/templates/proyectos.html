@@ -32,13 +32,13 @@
 	
 	<div id="three-column" class="container">
 		<div class="boxA">
-			<a href="{% if User %}{% url 'proyectoLoged' %}?{{User}}{% else %}{% url 'proyecto' %}{% endif %}" class="button button-alt">More Info</a>
+			<a href="{% if User %}{% url 'proyectoLoged' User %}{% else %}{% url 'proyecto' %}{% endif %}" class="button button-alt">More Info</a>
 		</div>
 		<div class="boxB">
-			<a href="{% if User %}{% url 'proyectoLoged' %}?{{User}}{% else %}{% url 'proyecto' %}{% endif %}" class="button button-alt">More Info</a>
+			<a href="{% if User %}{% url 'proyectoLoged' User %}{% else %}{% url 'proyecto' %}{% endif %}" class="button button-alt">More Info</a>
 		</div>
 		<div class="boxC">
-			<a href="{% if User %}{% url 'proyectoLoged' %}?{{User}}{% else %}{% url 'proyecto' %}{% endif %}" class="button button-alt">More Info</a>
+			<a href="{% if User %}{% url 'proyectoLoged' User %}{% else %}{% url 'proyecto' %}{% endif %}" class="button button-alt">More Info</a>
 		</div>
 	</div>
     </div>
@@ -48,7 +48,7 @@
                 <h2>¿No encontraste nada? Arma tu vaquita.</h2>
                 <span class="byline">Personas de todo el mundo juntaron dinero para su proyecto.</span>
             </div>
-                <li><a href="#" class="button">Empieza una campaña</a></li>
+                <li><a href="{% if User %}{% url 'newproyect' User%}{% else %}{% url 'login' %}{% endif %}" class="button">Empieza una campaña</a></li>
             </ul>
         </div>
     </div>

@@ -109,7 +109,7 @@ def loge(request):
             if passwordd == password:
                 messages.success(request,'Bienvenido de nuevo {}'.format(user_ver[0].name))
                 return render(request, 'index.html', {
-                    'User' : user_ver[0],
+                    'User' : 'sssfcv{}sqaznchdyr'.format(user_ver[0].id),
                 })
             else:
                 form = LoginUser()
@@ -122,32 +122,28 @@ def loge(request):
     return HttpResponse("Login")
 
 
-def indexUser(request):
+def indexUser(request, User = ''):
     if request.POST:
         user = User(request.POST)
         request.POST = None
     elif request.GET:
-        user = User(request.GET)
+        user = User
         
     print(request)
     return render(request, 'index.html', {
-        'User' : user
+        'User' : User
     })
 
-def proyectosUser(request):
-    if request.GET:
-        user = User(request.GET)
+def proyectosUser(request, User = ''):
     
     return render(request, 'proyectos.html', {
-        'User' : user
+        'User' : User
     })
 
-def proyectoUser(request):
-    if request.GET:
-        user = User(request.GET)
+def proyectoUser(request, User = ''):
  
     return render(request, 'proyect.html', {
-        'User' : user
+        'User' : User
     })
 
 def recuperarpass(request):
