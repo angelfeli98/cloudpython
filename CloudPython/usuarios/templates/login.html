@@ -21,8 +21,7 @@
         {% endif %}
         {% csrf_token %}
         {{form}}
-      <p><a href="recuperar_pwd.html" style="color:dodgerblue">Recuperar contraseña</a>.</p>
-
+      <p><a href="{% url 'formreset' %}" style="color:dodgerblue">Recuperar contraseña</a>.</p>
       <div class="clearfix">
 		<button id="clickMe" type="button" value="clickme" onclick="cancel_signup();" class="cancelbtn">Cancelar</button>
 		<!-- <button onclick="window.location.href='/index.html'" class="cancelbtn">Cancelar</button> -->

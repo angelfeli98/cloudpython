@@ -58,3 +58,29 @@ class LoginUser(forms.Form):
            }
         )
     )
+
+class SendMail(forms.Form):
+    user = forms.EmailField(
+        label = "Correo:",
+        max_length = 50, 
+        required=True,
+    )
+
+class ResetPass(forms.Form):
+    newpass = forms.CharField(
+        label = "Nueva Contraseña",
+        widget = forms.PasswordInput(
+            attrs = {
+               "autocomplete" : "new-password"
+           }
+        )
+    )
+    
+    conPassword  = forms.CharField(
+        label = "Confirma Constraseña",
+        widget = forms.PasswordInput(
+            attrs = {
+               "autocomplete" : "new-password"
+           }
+        )
+    )

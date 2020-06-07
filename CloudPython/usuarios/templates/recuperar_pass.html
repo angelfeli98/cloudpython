@@ -1,0 +1,29 @@
+
+{% extends 'forms.html' %}
+
+
+{% block title %}
+    Reset Password
+{% endblock  %}
+
+{% block method %}
+    {% url 'send_email' %}
+{% endblock  %}
+
+{% block content %}
+    <h1>Recuperar contraseña</h1>
+    <p>Escribe tu correo y te enviaremos un enlace para cambiar tu contraseña</p>
+    <hr>   
+    {% if message %}
+        <div class = "warn">
+            <strong>{{message}}</strong><br>
+        </div>      
+    {% endif %}
+    {% csrf_token %}
+    {{form}}
+    <div class="clearfix">
+		<button id="clickMe" type="button" value="clickme" onclick="cancel_signup();" class="cancelbtn">Cancelar</button>
+		<!-- <button onclick="window.location.href='/index.html'" class="cancelbtn">Cancelar</button> -->
+        <button type="submit"  class="signupbtn">Enviar</button>
+    </div>
+{% endblock  %}

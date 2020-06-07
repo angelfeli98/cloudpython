@@ -33,4 +33,8 @@ urlpatterns = [
     path('your-proyects/', proyecto.yourProyects, name = 'tusproyectos'),
     path('register-proyec/', proyecto.newproyect, name = 'newproyect'),
     path('save-proyect/', proyecto.savePoryect, name = 'saveproyecto'),
+    path('form-reset', user.recuperarpass, name = 'formreset'),
+    path('send-email/', user.sendEmail, name = 'send_email'),
+    path('reset-pass/', user.newpass, name = 'newpass'),
+    path('new-pass/', user.changePass, name = 'formpass'),
 ]

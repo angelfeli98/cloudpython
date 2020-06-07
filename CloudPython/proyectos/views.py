@@ -1,13 +1,13 @@
 from django.shortcuts import render, HttpResponse, redirect
 from proyectos.forms import ProyectoSave 
-
+from datetime import date, datetime
+from proyectos.models import Proyect
 # Create your views here.
 
 def index(request):
     if request.GET:
         user = request.GET
-        request.GET.clean()
-
+       
     return render(request, 'index.html')
 
 def proyectos(request):
@@ -28,7 +28,6 @@ def yourProyects(request):
 def newproyect(request):
     form = ProyectoSave()
     user = request.GET.keys()
-    request.GET.clean()
     return render(request, 'newproyect.html', {
         'form' : form,
         'User' : user
@@ -45,10 +44,24 @@ def savePoryect(request):
             image = request.POST['image']
             category_id  = request.POST['category']
             actual = 0
-            userOwner_id = 2
-
-            print(type(description))
+            userOwner_id = 4
+            deadline = datetime.strptime(deadline, '%Y-%m-%d').date()
             print(type(deadline))
+            print(deadline)
+
+            data = Proyect(
+                name = name,  
+                goal = goal,
+                deadline = deadline,
+                description = description,
+                image = image,
+                category_id  = category_id,
+                actual = actual,
+                userOwner_id = userOwner_id,
+            )
+
+            data.save()
+            
             return HttpResponse('SALVADO')
         except Exception as e:
             return HttpResponse(type(e).__name__)
