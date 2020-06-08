@@ -20,7 +20,7 @@
             <p>Se te han asignado ${{ User.wallet }} para que apoyes los proyectos que quieras</p>
         </div>
         <div class = "center">
-            <form action = "{% url 'indexLoged' %}?{{User}}" method = "POST">
+            <form action = "{% url 'indexLogedUser' idUser%}" method = "POST">
                 {% csrf_token %}
                 <button class = "button button-alt" type = "submit">Comienza a apoyar</button>
             </form>

@@ -8,6 +8,7 @@ from django.contrib import messages
 from rest_framework.views import APIView
 from django.core.mail import send_mail
 from django.http.request import QueryDict
+from proyectos.models import Proyect
 
 
 
@@ -67,12 +68,13 @@ def guardarUsuarios(request):
             fail_silently=False,
         )
         item.save()
-        
+        idUser = User.objects.filter(user = user)[0].id
         flag = item
         form = UsuariosForm()
         return render(request, 'signup-su.html', {
             'User' : flag,
-            'form' : form
+            'form' : form,
+            'idUser' : 'sssfcv{}sqaznchdyr'.format(idUser),
         })
     except Exception as e:
         form = UsuariosForm()
@@ -115,7 +117,8 @@ def loge(request):
                 form = LoginUser()
                 message = "Usuario o Contraseña incorrecto"
                 return render(request, 'login.html', {
-                    'form' : form
+                    'form' : form,
+                    'message' : message 
                 })   
     except:
         return HttpResponse("ERROR")
@@ -124,26 +127,48 @@ def loge(request):
 
 def indexUser(request, User = ''):
     if request.POST:
-        user = User(request.POST)
-        request.POST = None
+        pass
+
     elif request.GET:
         user = User
+
+    proyectos_destacado = Proyect.objects.all()[:3]
+
+    return render(request, 'index.html',{
+        'proys' : proyectos_destacado,
+        'User' : User
+    })
         
-    print(request)
-    return render(request, 'index.html', {
-        'User' : User
-    })
 
-def proyectosUser(request, User = ''):
-    
+def proyectosUser(request, User = '', idP = 0):
+    proyectos_destacado = Proyect.objects.all()[:3]
     return render(request, 'proyectos.html', {
-        'User' : User
+        'User' : User,
+        'proys' : proyectos_destacado,
     })
 
-def proyectoUser(request, User = ''):
- 
+def proyectoUser(request, idUser = '', idP = 0):
+    aux = ''
+    for letra in idUser:
+        if letra.isdigit():
+            aux += letra
+
+    id_user = int(aux) 
+    
+    proyecto = Proyect.objects.get(pk = idP)
+    
+    owner = User.objects.get(pk = proyecto.userOwner_id)
+
+    if id_user == owner.id:
+        mine = True
+    else:
+        mine = False
+
     return render(request, 'proyect.html', {
-        'User' : User
+        'proyecto' : proyecto,
+        'Owner' : owner,
+        'User' : idUser,
+        'Mine' : mine
     })
 
 def recuperarpass(request):
@@ -158,15 +183,28 @@ def sendEmail(request):
         if request.POST:
             user = User.objects.filter(user = request.POST['user'])
             if user:
-                send_mail(
-                'RESET PASSWORD',
-                'Entra al siguiente enlace para recuperar tu contraseña http://127.0.0.1:8000/reset-pass/?{}'.format(user),
-                'founde.me@gmail.com',
-                [request.POST['user']],
-                fail_silently=False,
-                )
-                messages.success(request,'Te hemos enviado un email para cambiar tu contraseña')
-                return render(request, 'index.html')
+                try:
+                    send_mail(
+                    'RESET PASSWORD',
+                    'Entra al siguiente enlace para recuperar tu contraseña http://127.0.0.1:8000/reset-pass/sssfcv{}sqaznchdyr'.format(user[0].id),
+                    'founde.me@gmail.com',
+                    [request.POST['user']],
+                    fail_silently=False,
+                    )
+                    messages.success(request,'Te hemos enviado un email para cambiar tu contraseña')
+                    proyectos_destacado = Proyect.objects.all()[:3]
+
+                    return render(request, 'index.html',{
+                        'proys' : proyectos_destacado
+                    })
+                except:
+                    form = SendMail()
+                    message = "Ocurrio un error"
+                    return render(request, 'recuperar_pass.html', {
+                    'form' : form,
+                    'message' : message
+                })  
+
             else:
                 form = SendMail()
                 message = "No hay ningun usuario con este email"
@@ -182,20 +220,53 @@ def sendEmail(request):
         'form' : form
     })
 
-def newpass(request):
-    if request.GET:
-        print(request.GET.keys())
+def newpass(request, User):
+    
     form = ResetPass()
     return render(request, 'newpassword.html',{
-        'form' : form
+        'form' : form,
+        'User' : User
     })
 
-def changePass(request):
-    if request.POST:
-        print(request.POST)
+def changePass(request, idUser):
+    aux = ''
+    for letra in idUser:
+        if letra.isdigit():
+            aux += letra
 
-    messages.success(request,'Bienvenido de nuevo {}'.format())
-    return render(request, 'index.html')
+    id_user = int(aux) 
+    user = User.objects.get(pk = id_user)
+
+    if request.POST:
+        newpass = request.POST['newpass']
+        conpass = request.POST['conPassword']
+        if not (newpass == conpass):
+            form = ResetPass()
+            
+            return render(request, 'newpassword.html',{
+                'form' : form,
+                'User' : id_user,
+                'message' : "No coinciden las contraseñas" 
+            })
+        #key = Fernet.generate_key()
+
+        file = open('key.key', 'rb+')
+        key = file.read()
+        file.close()
+        
+        f = Fernet(key)
+        passwordb = newpass.encode()
+        passwdencry = f.encrypt(passwordb)
+        try:
+            user.password = passwdencry
+            user.save()
+        except:
+            return HttpResponse("ERROR")
+
+    messages.success(request,'Bienvenido de nuevo {}'.format(user.name))
+    return render(request, 'index.html', {
+        'User' : 'sssfcv{}sqaznchdyr'.format(user.id),
+    })
 
 
 

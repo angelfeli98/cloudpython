@@ -630,6 +630,44 @@
 		
 	}
 
+	table {
+		width:100%;
+	  }
+	  table, th, td {
+		border: 0px solid black;
+		border-collapse: collapse;
+	  }
+	  th, td {
+		padding: 20px;
+		text-align: center;
+	  }
+
+tr{
+	border-bottom: 1px;
+}
+	  table#t01 tr:nth-child(even) {
+		background-color: #eee;
+	  }
+	  table#t01 tr:nth-child(odd) {
+	   background-color: #fff;
+	  }
+	  table#t01 th {
+		background-color: black;
+		color: white;
+	  }
+
+
+	  .myproyectlink:link, .myproyectlink:visited {
+		background-color: #2651a8;
+		color: white;
+		text-decoration: none;
+		padding: 5px;
+	  }
+	  
+	  .myproyectlink:hover, .myproyectlink:active {
+		background-color: #1e55c2;
+	  }
+
 	.headerP{
 		height: 425px;
 	}

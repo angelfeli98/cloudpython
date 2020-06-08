@@ -2,23 +2,30 @@ from django.shortcuts import render, HttpResponse, redirect
 from proyectos.forms import ProyectoSave 
 from datetime import date, datetime
 from proyectos.models import Proyect
+from usuarios.models import User
 # Create your views here.
 
 def index(request):
-    if request.GET:
-        user = request.GET
-       
-    return render(request, 'index.html')
+    proyectos_destacado = Proyect.objects.all()[:3]
 
-def proyectos(request, User = ''):
-
-    return render(request, 'proyectos.html',{
-        'User' : User 
+    return render(request, 'index.html',{
+        'proys' : proyectos_destacado
     })
 
-def proyecto(request):
+def proyectos(request, idP = ''):
+    proyectos_destacado = Proyect.objects.all()[:3]
+    return render(request, 'proyectos.html',{
+        'proys' : proyectos_destacado
+    })
 
-    return render(request, 'proyect.html')
+def proyecto(request, idP = ''):
+    proyecto = Proyect.objects.get(pk = idP)
+    owner = User.objects.get(pk = proyecto.userOwner_id)
+
+    return render(request, 'proyect.html', {
+        'proyecto' : proyecto,
+        'Owner' : owner,
+    })
 
 def yourProyects(request, User):
     aux = ''

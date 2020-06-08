@@ -8,13 +8,30 @@
 
 {% block content %}
     <div class = "headerP">
-        <h1>Tus ideas, tus metas</h1>
+        <h1>Tus ideas, tus metas, tus proyectos</h1>
         {% if proyects %}
-            {% for proyect in proyects %}
-                <div class = "procontainer">
-                    <a class = "proyectlink" href ="{% url 'newproyect' User%}">MONITORIZAR<a/>
-                </div>
-            {% endfor %}
+            <div class = "procontainer">
+                <table class = "proyectos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Meta</th>
+                        <th>Actual</th>
+                        <th>Pagina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for proyect in proyects %}
+                <tr>
+                    <td>{{proyect.name}}</td>
+                    <td>{{proyect.goal}}</td>
+                    <td>{{proyect.actual}}</td>
+                    <td><a class = "myproyectlink" href ="{% url 'newproyect' User%}">MONITORIZAR<a/></td>
+                <tr>
+                {% endfor %}
+                <tbody>
+                </table>
+            </div>
         {% else %}
         <h1>Todavia no tienes ningun proyecto</h1>
         <h3>No esperes para compartir tus ideas</h3>

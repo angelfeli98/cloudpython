@@ -7,10 +7,11 @@
 {% endblock  %}
 
 {% block content %}
+
 <div class = "main-project-container">
     <div class="title">
-		<h2>Esta es la página de un proyecto.</h2>
-		<span class="byline">Una descripción corta..</span>
+		<h2>{{proyecto.name}}</h2>
+		<span class="byline">Ayuda a {{Owner.name}} con su proyecto</span>
 	</div>
     
 	<div class="container-proyecto-left">
@@ -18,14 +19,13 @@
     <div>
         <img class = "image-centered" src="{% static 'images/imagen_proyecto1.png' %}">
 	</div>
-        
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        {{proyecto.description|safe}}
 	</div>	
     
     <div class="container-proyecto-right">
 	<div class="title">
-		<h3>MX $1500</h3>
-		<span class="byline-2">De $30,000</span>
+		<h3>MX ${{proyecto.actual}}</h3>
+		<span class="byline-2">De ${{proyecto.goal}}</span>
 	</div>
         
     <div class="title">
@@ -34,12 +34,12 @@
 	</div>
         
     <div class="title">
-		<h3>10 </h3>
-        <span class="byline-2">días restantes</span>
+		<h3>{{ proyecto.deadline }}</h3>
+        <span class="byline-2">Fecha limite</span>
 	</div>
         
     <div>
-        <a href="pagina_proyecto.html" class="button button-alt">Apoya este proyecto</a>
+        <a href="{% if User %}{% else %}{% url 'login' %}{% endif %}" class="button button-alt">{% if Mine %}Monitoriza{% else %}Apoya este proyecto{% endif %}</a>
 	</div>
         
         
