@@ -44,4 +44,5 @@ urlpatterns = [
     path('proyectos-destacados/<int:idP>', proyecto.proyectos, name = 'proyectos'),
     path('form-suport/<str:user>/<int:idP>', proyecto.formSuport, name = 'formsuport'),
     path('proyect-suport/<int:user>/<int:idP>', proyecto.suportProyect, name = 'suport'),
+    path('user-info/<str:user>', proyecto.userInfo, name = 'userinfo'),
 ]

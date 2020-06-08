@@ -49,7 +49,7 @@ Released   : 20140330
 				<li><a id = "navi" href="{% if User %}{% url 'proyectosLoged' User %}{% else %}{% url 'proyectos' %}{% endif %}" accesskey="3" title="">Proyectos</a></li>
 				{% if User %}
 					<li><a id = "navi" href="{% url 'tusproyectos' User %}" accesskey="1" title="">Tus Proyectos</a></li>
-					<li><a id = "navi" href="{% url 'proyectosLoged' User %}" accesskey="3" title="">Perfil</a></li>
+					<li><a id = "navi" href="{% url 'userinfo' User %}" accesskey="3" title="">Perfil</a></li>
 				{% else %}
 					<li><a id = "navi" href="{% url 'register' %}" accesskey="2" title="">Registrate</a></li>
 					<li><a id = "navi" href="{% url 'login' %}" accesskey="4" title="">Login</a></li>

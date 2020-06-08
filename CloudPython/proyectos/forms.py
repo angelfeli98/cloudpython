@@ -2,7 +2,7 @@ from django import forms
 from django.core import validators
 from ckeditor.fields import CKEditorWidget 
 from datetime import datetime
-from proyectos.models import Category
+from proyectos.models import Category 
 
 class ProyectoSave(forms.Form):
 

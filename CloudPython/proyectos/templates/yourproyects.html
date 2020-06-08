@@ -26,7 +26,7 @@
                     <td>{{proyect.name}}</td>
                     <td>{{proyect.goal}}</td>
                     <td>{{proyect.actual}}</td>
-                    <td><a class = "myproyectlink" href ="{% url 'newproyect' User%}">MONITORIZAR<a/></td>
+                    <td><a class = "myproyectlink" href ="{% url 'proyectoLoged' User proyect.id%}">MONITORIZAR<a/></td>
                 <tr>
                 {% endfor %}
                 <tbody>

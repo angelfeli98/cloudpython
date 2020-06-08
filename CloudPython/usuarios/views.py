@@ -264,10 +264,11 @@ def changePass(request, idUser):
             user.save()
         except:
             return HttpResponse("ERROR")
-
+    proyectos_destacado = Proyect.objects.all()[:3]
     messages.success(request,'Bienvenido de nuevo {}'.format(user.name))
     return render(request, 'index.html', {
         'User' : 'sssfcv{}sqaznchdyr'.format(user.id),
+        'proys' : proyectos_destacado
     })
 
 
