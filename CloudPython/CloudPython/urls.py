@@ -42,4 +42,6 @@ urlpatterns = [
     path('new-pass/<str:idUser>', user.changePass, name = 'formpass'),
     path('loge/<str:User>', user.indexUser, name = 'indexLogedUser'),
     path('proyectos-destacados/<int:idP>', proyecto.proyectos, name = 'proyectos'),
+    path('form-suport/<str:user>/<int:idP>', proyecto.formSuport, name = 'formsuport'),
+    path('proyect-suport/<int:user>/<int:idP>', proyecto.suportProyect, name = 'suport'),
 ]

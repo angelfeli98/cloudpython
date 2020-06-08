@@ -39,8 +39,8 @@
 	</div>
         
     <div>
-        <a href="{% if User %}{% else %}{% url 'login' %}{% endif %}" class="button button-alt">{% if Mine %}Monitoriza{% else %}Apoya este proyecto{% endif %}</a>
-	</div>
+        <a href="{% if User %}{% if Mine %}{% else %}{% url 'formsuport' User proyecto.id%}{% endif %}{% else %}{% url 'login' %}{% endif %}" class="button button-alt">{% if Mine %}Monitoriza{% else %}Apoya este proyecto{% endif %}</a>
+	</div>							
         
         
 </div>

@@ -51,4 +51,10 @@ class ProyectoSave(forms.Form):
         )
     )
 
+class SuportProyect(forms.Form):
+    money = forms.IntegerField(
+        label = '¿Con cuanto quieres apoyar este proyecto?',
+        required = True,
+    )
+
 

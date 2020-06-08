@@ -109,9 +109,11 @@ def loge(request):
             f = Fernet(key)
             passwordd = f.decrypt(user_ver[0].password).decode()
             if passwordd == password:
+                proyectos_destacado = Proyect.objects.all()[:3]
                 messages.success(request,'Bienvenido de nuevo {}'.format(user_ver[0].name))
                 return render(request, 'index.html', {
                     'User' : 'sssfcv{}sqaznchdyr'.format(user_ver[0].id),
+                    'proys' : proyectos_destacado
                 })
             else:
                 form = LoginUser()
@@ -120,8 +122,8 @@ def loge(request):
                     'form' : form,
                     'message' : message 
                 })   
-    except:
-        return HttpResponse("ERROR")
+    except Exception as e:
+        return HttpResponse(type(e).__name__)
     return HttpResponse("Login")
 
 

@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
-from proyectos.forms import ProyectoSave 
+from proyectos.forms import ProyectoSave, SuportProyect
 from datetime import date, datetime
 from proyectos.models import Proyect
 from usuarios.models import User
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -104,4 +105,50 @@ def savePoryect(request, User):
         #'User' : user
         })
         
+def formSuport(request, user = '', idP = 0):
+    form = SuportProyect()
+    aux = ''
+    for letra in user:
+        if letra.isdigit():
+            aux += letra
+    idUser = int(aux) 
+    
+    userdata = User.objects.get(pk = idUser)
+    return render(request, 'suport-p.html', {
+        'form' : form,
+        'User' : userdata,
+        'proyect' : idP,
+    })
+
+def suportProyect(request, user  = 0, idP = 0):
+    
+    if request.POST:
+        money = request.POST['money']
+        userp = User.objects.get(pk = user)
+        if float(money) > userp.wallet:
+            form = SuportProyect()
+            message = "No tienes tanto dinero"
+            return render(request, 'suport-p.html', {
+            'form' : form,
+            'User' : userp,
+            'proyect' : idP,
+            'message' : message
+        })
+        else:
+            proyecto = Proyect.objects.get(pk = idP)
+            proyecto.actual += float(money)
+            proyecto.save()
+            userp.wallet -= float(money)
+            userp.save()
+            messages.success(request,'Gracias por apoyar proyectos {}'.format(userp.name))
+            return render(request, 'proyect.html',{
+                'User' : 'sssfcv{}sqaznchdyr'.format(userp.id),
+                'idP' : idP, 
+                'proyecto' : proyecto
+            })
+
+
+    return HttpResponse('Apoyado')
+
+
 
