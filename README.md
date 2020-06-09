@@ -113,7 +113,7 @@ Para correr el proyecto necesitaras las siguientes dependenciad pip
 -cryptography
 -django-ckeditor
 
-Para instalar un comando ejecuta la siguiente dependencia
+Para instalar una dependencia ejecuta el siguiente comando 
 ```
 pip install nombreDependencia
 ```
