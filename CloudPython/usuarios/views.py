@@ -8,7 +8,7 @@ from django.contrib import messages
 from rest_framework.views import APIView
 from django.core.mail import send_mail
 from django.http.request import QueryDict
-from proyectos.models import Proyect
+from proyectos.models import Proyect, Patron
 
 
 
@@ -156,7 +156,7 @@ def proyectoUser(request, idUser = '', idP = 0):
             aux += letra
 
     id_user = int(aux) 
-    
+    patrons = len(Patron.objects.filter(proyecto_id = idP))
     proyecto = Proyect.objects.get(pk = idP)
     
     owner = User.objects.get(pk = proyecto.userOwner_id)
@@ -170,7 +170,8 @@ def proyectoUser(request, idUser = '', idP = 0):
         'proyecto' : proyecto,
         'Owner' : owner,
         'User' : idUser,
-        'Mine' : mine
+        'Mine' : mine,
+        'NoP' : patrons
     })
 
 def recuperarpass(request):

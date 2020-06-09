@@ -8,13 +8,18 @@
 {% block content %}
     <h1>Tu Perfil</h1>
     <div>
-        <h2>Correo: </h2><p>{{User.user}}</p>
-        <h2>Nombre: </h2><p>{{User.name}}</p>
-        <h2>Saldo actual:</h2><p>${{User.wallet}}</p>
-        <h2>Foto: </h2> {% if User.photo %}<img src = "{{User.photo}}">{% else %}<p>No tienes niguna foto</p>{% endif %} 
+        <h2>Correo: </h2><p>{{Userinfo.user}}</p>
+        <h2>Nombre: </h2><p>{{Userinfo.name}}</p>
+        <h2>Saldo actual:</h2><p>${{Userinfo.wallet}}</p>
+        <h2>Foto: </h2> {% if Userinfo.photo %}<img src = "{{Userinfo.photo}}">{% else %}<p>No tienes niguna foto</p>{% endif %} 
     </div>
 
 
     <hr>
-    <h2>Proyectos que apoyaste</h2>
+    <h2>Donacione que has hecho</h2>
+    <div>
+        {% for proyect in Proyects %}<p>Nombre: {{proyect.name}}</p> {% empty %}<h3>Todavia no has apoyado ningun proyecto</h3>{% endfor %}
+    </div>
+    <a class = "proyectlink" href ="{% url 'index'%}">Cerrar sesion<a/>
+
 {% endblock content %}

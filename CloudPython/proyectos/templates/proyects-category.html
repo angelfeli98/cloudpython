@@ -1,0 +1,70 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}
+    Proyectos
+{% endblock title %}
+
+{% block content %}
+    <div id="wrapper">
+        <div class="title">
+			<div id="three-column" class="container">
+		        <div class="title">
+			    <h2>Estas son las campañas activas.</h2>
+			    <span class="byline">Encuentra algo que te guste y ponle unos billetes.</span>
+                <h3>Categorias</h3>
+                <div id = "categoryna">
+                    <ul class = "nav">
+                        <li><a class="linkcategory" href = "">Categoria</a>
+                            <ul>
+                                {% for category in Categories %}
+                                    <li><a class="linkcategory" href = "{% if User %}{% url 'proyectsCate' User category.id%}{% else %}{% url 'proyectsCate' category.id%}{% endif %}">{{category.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</div>
+    </div>
+    <div id = "proyectosList">
+        <h1>Categoria</h1>
+        {% if Proyects %}
+            <div class = "procontainer">
+                <table class = "proyectos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Meta</th>
+                        <th>Actual</th>
+                        <th>Pagina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for proyect in Proyects %}
+                <tr>
+                    <td>{{proyect.name}}</td>
+                    <td>{{proyect.goal}}</td>
+                    <td>{{proyect.actual}}</td>
+                    <td><a class = "myproyectlink" href ="{% if User %}{% url 'proyectoLoged' User proyect.id%}{% else %}{% url 'proyecto' proyect.id %}{% endif %}">Mas info<a/></td>
+                <tr>
+                {% endfor %}
+                <tbody>
+                </table>
+            </div>
+        {% else %}
+        <h3>Todavia no hay ningun proyecto en esta categoria</h3>
+        {% endif %}
+    </div>
+    <div id="welcome">
+        <div class="container">
+            <div class="title">
+                <h2>¿No encontraste nada? Arma tu vaquita.</h2>
+                <span class="byline">Personas de todo el mundo juntaron dinero para su proyecto.</span>
+            </div>
+                <li><a href="{% if User %}{% url 'newproyect' User%}{% else %}{% url 'login' %}{% endif %}" class="button">Empieza una campaña</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

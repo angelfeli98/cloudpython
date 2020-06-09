@@ -41,12 +41,12 @@ Released   : 20140330
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="{% url 'index' %}"><strong>FONDEA.ME</strong></a></h1>
+			<h1><a href="{% if User %}{% url 'indexLogedUser'  User %}{% else %}{% url 'index' %}{% endif %}"><strong>FONDEA.ME</strong></a></h1>
 		</div>
 		<div id="menu">
 			<ul>
 				<li><a id = "navi" href="{% if User %}{% url 'indexLogedUser'  User %}{% else %}{% url 'index' %}{% endif %}" accesskey="1" title="">Homepage</a></li>
-				<li><a id = "navi" href="{% if User %}{% url 'proyectosLoged' User %}{% else %}{% url 'proyectos' %}{% endif %}" accesskey="3" title="">Proyectos</a></li>
+				<li><a id = "navi" href="{% if User %}{% url 'proyectsCate' User '1'%}{% else %}{% url 'proyectsCate' %}{% endif %}" accesskey="3" title="">Proyectos</a></li>
 				{% if User %}
 					<li><a id = "navi" href="{% url 'tusproyectos' User %}" accesskey="1" title="">Tus Proyectos</a></li>
 					<li><a id = "navi" href="{% url 'userinfo' User %}" accesskey="3" title="">Perfil</a></li>

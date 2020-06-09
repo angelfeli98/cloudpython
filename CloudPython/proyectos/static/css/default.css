@@ -692,4 +692,59 @@ tr{
 
 	  /* FORM */
 
+.Categorias{
+	background-color: white;
+	height: 500px;
+}
 	  
+#proyectosList{
+	background-color: white;
+	color: black;
+}
+
+#proyectosList h1{
+	padding-left: 46%;
+}
+
+#categoryna{
+	padding-left: 45%;
+}
+
+ul, ol {
+	list-style:none;
+}
+
+.nav > li {
+	float:left;
+}
+
+.nav li a {
+	background-color:#1e55c2;
+	color:#fff;
+	text-decoration:none;
+	padding:15px 30px;
+	display:block;
+}
+
+.nav li a:hover {
+	background-color:#3666c7;
+}
+
+.nav li ul {
+	display:none;
+	position:absolute;
+	min-width:140px;
+}
+
+.nav li:hover > ul {
+	display:block;
+}
+
+.nav li ul li {
+	position:relative;
+}
+
+.nav li ul li ul {
+	right:-140px;
+	top:0px;
+}

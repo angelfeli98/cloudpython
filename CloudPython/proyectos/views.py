@@ -180,8 +180,21 @@ def userInfo(request, user):
             aux += letra
     idUser = int(aux) 
     userinfo = User.objects.get(pk = idUser) 
+    proyectosApoyados = [Proyect.objects.get(pk = proy.proyecto_id) for proy in Patron.objects.filter(patron_id = userinfo.id) ]
     return render(request, 'user-info.html', {
-        'User' : userinfo
+        'User' : 'sssfcv{}sqaznchdyr'.format(userinfo.id),
+        'Userinfo' : userinfo,
+        'Proyects' : proyectosApoyados
     })
 
+def proyectosCategorias(request, user = None, idC = None):
+    categories = Category.objects.all()
+    proyects = Proyect.objects.filter(category = categories[0].id)
+    if idC:
+        proyects = Proyect.objects.filter(category = idC)
+    return render(request, 'proyects-category.html',{
+        'Categories' : categories,
+        'Proyects' : proyects,
+        'User' : user
+    })
 

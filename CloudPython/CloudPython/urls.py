@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from proyectos import views as proyecto
 from usuarios import views as user
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls, name = 'admin'),
@@ -45,4 +46,13 @@ urlpatterns = [
     path('form-suport/<str:user>/<int:idP>', proyecto.formSuport, name = 'formsuport'),
     path('proyect-suport/<int:user>/<int:idP>', proyecto.suportProyect, name = 'suport'),
     path('user-info/<str:user>', proyecto.userInfo, name = 'userinfo'),
+    path('proyects-categoria/', proyecto.proyectosCategorias, name = 'proyectsCate'),
+    path('proyects-categoria/<int:idC>', proyecto.proyectosCategorias, name = 'proyectsCate'),
+    path('proyects-categoria/<str:user>/<int:idC>', proyecto.proyectosCategorias, name = 'proyectsCate'),
 ]
+
+# Configuracion para cargar imagenes 
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
