@@ -1,11 +1,16 @@
 # Django #
+ignorado.txt
+test_document.txt
 *.log
 *.pot
 *.pyc
+**/__pycache__/**
 __pycache__
 db.sqlite3
 media
-**/__pycache__/**
+CloudPython/__pycache__/**
+proyectos/__pycache__/**
+usuarios/__pycache__/**
 
 # Backup files # 
 *.bak 
