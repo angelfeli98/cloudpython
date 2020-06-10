@@ -19,14 +19,14 @@ Released   : 20140330
 <title>
 	{% block title %}
 	{% endblock  %}
-	| Founde.me
+	| Fondea.me
 </title>
+    
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
 <link href={% static 'css/default.css' %} rel="stylesheet" type="text/css" media="all" />
 <link href={% static 'css/fonts.css'%} rel="stylesheet" type="text/css" media="all" />
-
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
 </head>
@@ -38,6 +38,7 @@ Released   : 20140330
 	{% endfor %}
 	</div>
 {% endif %}
+    
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
@@ -45,23 +46,45 @@ Released   : 20140330
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a id = "navi" href="{% if User %}{% url 'indexLogedUser'  User %}{% else %}{% url 'index' %}{% endif %}" accesskey="1" title="">Homepage</a></li>
-				<li><a id = "navi" href="{% if User %}{% url 'proyectsCate' User '1'%}{% else %}{% url 'proyectsCate' %}{% endif %}" accesskey="3" title="">Proyectos</a></li>
+				<li><a id = "navi" href="{% if User %}{% url 'indexLogedUser'  User %}{% else %}{% url 'index' %}{% endif %}" accesskey="1" title="">
+                    Homepage
+                </a></li>
+                
+				<li><a id = "navi" href="{% if User %}{% url 'proyectsCate' User '1'%}{% else %}{% url 'proyectsCate' %}{% endif %}" accesskey="3" title="">
+                    Proyectos
+                </a></li>
+                
 				{% if User %}
-					<li><a id = "navi" href="{% url 'tusproyectos' User %}" accesskey="1" title="">Tus Proyectos</a></li>
-					<li><a id = "navi" href="{% url 'userinfo' User %}" accesskey="3" title="">Perfil</a></li>
+					<li><a id = "navi" href="{% url 'tusproyectos' User %}" accesskey="1" title="">
+                        Tus Proyectos
+                    </a></li>
+                
+					<li><a id = "navi" href="{% url 'userinfo' User %}" accesskey="3" title="">
+                        Perfil
+                    </a></li>
 				{% else %}
-					<li><a id = "navi" href="{% url 'register' %}" accesskey="2" title="">Registrate</a></li>
-					<li><a id = "navi" href="{% url 'login' %}" accesskey="4" title="">Login</a></li>
+					<li><a id = "navi" href="{% url 'register' %}" accesskey="2" title="">
+                        Registrate
+                    </a></li>
+                
+					<li><a id = "navi" href="{% url 'login' %}" accesskey="4" title="">
+                        Login
+                    </a></li>
 				{% endif %}
-				<li><a id = "navi" href="#" accesskey="5" title="">Contactanos</a></li>
+                
+				<li><a id = "navi" href="#" accesskey="5" title="">
+                    Contactanos
+                </a></li>
+                
 			</ul>
 		</div>
 	</div>
 	
 	{% block index %}
 	{% endblock  %}
+    
 </div>
+    
 {% block content %}
 
 

@@ -605,7 +605,45 @@
 	{
 		text-align: center;
 		color: rgba(0,0,0,.5);
+        
 	}
+
+/*********************************************************************************/
+/* main-content                                                                      */
+/*********************************************************************************/
+
+
+    #main-content 
+	{
+		text-align: center;
+		color: rgba(0,0,0,0.6);
+	}
+
+	#main-content  .fa
+	{
+		display: block;
+		padding: 1em 0em;
+		color: rgba(0,0,0,1);
+		font-size: 2em;
+	}
+	
+	#main-content .title h2
+	{
+		font-weight: bold;
+		color: rgba(0,0,0,0.8);
+	}
+
+	#main-content .title .byline
+	{
+		text-align: center;
+		color: rgba(0,0,0,.5);
+        
+	}
+
+/*********************************************************************************/
+/* Otro                                                                     */
+/*********************************************************************************/
+
 
     #container-proyecto-right .title h2
 	{
@@ -710,6 +748,7 @@ tr{
 	padding-left: 45%;
 }
 
+
 ul, ol {
 	list-style:none;
 }
@@ -748,3 +787,22 @@ ul, ol {
 	right:-140px;
 	top:0px;
 }
+
+
+.nav{
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+    display: inline-block;
+}
+.nav li{
+    display:inline;
+}
+.nav a{
+    display:inline-block;
+    padding:10px;
+}
+
