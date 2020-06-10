@@ -107,6 +107,17 @@ Una vez descargado e instalado ejecutamos
 pip install Django
 ```
 
+Para correr el proyecto necesitaras las siguientes dependenciad pip
+
+-pillow
+-cryptography
+-django-ckeditor
+
+Para instalar una dependencia ejecuta el siguiente comando 
+```
+pip install nombreDependencia
+```
+
 Para ejecutar correr el proyecto no colocamos donde se encuentre el archivo manage.py
 
 Ejecutamos 
