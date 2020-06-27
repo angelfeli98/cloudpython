@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls, name = 'admin'),
-    path('', proyecto.index , name = "index"), 
+    path('', proyecto.index , name = "index"),
     path('proyectos-destacados/', proyecto.proyectos, name = 'proyectos'),
     path('register/', user.signup, name = 'register'),
     path('register-user/', user.guardarUsuarios, name = 'Guardar'),
@@ -51,7 +51,7 @@ urlpatterns = [
     path('proyects-categoria/<str:user>/<int:idC>', proyecto.proyectosCategorias, name = 'proyectsCate'),
 ]
 
-# Configuracion para cargar imagenes 
+# Configuracion para cargar imagenes
 
 if settings.DEBUG:
     from django.conf.urls.static import static

@@ -22,7 +22,7 @@ class Proyect(models.Model):
     upload = models.DateTimeField(auto_now = True)
     category = models.ForeignKey("Category", verbose_name=("Category"), on_delete=models.CASCADE)
     userOwner = models.ForeignKey(User, verbose_name=("Owner"), related_name='Owner',on_delete=models.CASCADE)
-    Patrons = models.ManyToManyField(User, 
+    Patrons = models.ManyToManyField(User,
         through = 'Patron',
         through_fields = ('proyecto','patron'),
         verbose_name=("Patrons"),

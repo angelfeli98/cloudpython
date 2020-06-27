@@ -23,7 +23,7 @@ class UsuariosForm(forms.Form):
            }
         )
     )
-    
+
     conPassword  = forms.CharField(
         label = "Confirma Constraseña",
         widget = forms.PasswordInput(

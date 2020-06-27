@@ -20,6 +20,10 @@
 		color: rgba(255,255,255,1);
 	}
 
+	.disable{
+		display: none;
+	}
+
 	.proyectlink{
 		display: table;
 		margin: 0 auto;	
@@ -557,19 +561,19 @@
 		background-size: cover;
 		text-align: center;
 	}
-	
+
 	#welcome .container
 	{
 		width: 1000px;
 		padding: 0px 100px;
 		color: rgba(255,255,255,0.8);
 	}
-	
+
 	#welcome a
 	{
 		color: rgba(255,255,255,1);
 	}
-	
+
 	#welcome .button
 	{
 		background: #FFF;
@@ -594,7 +598,7 @@
 		color: rgba(0,0,0,1);
 		font-size: 2em;
 	}
-	
+
 	#three-column .title h2
 	{
 		font-weight: bold;
@@ -605,7 +609,6 @@
 	{
 		text-align: center;
 		color: rgba(0,0,0,.5);
-        
 	}
 
 /*********************************************************************************/
@@ -613,7 +616,7 @@
 /*********************************************************************************/
 
 
-    #main-content 
+    #main-content
 	{
 		text-align: center;
 		color: rgba(0,0,0,0.6);
@@ -626,7 +629,7 @@
 		color: rgba(0,0,0,1);
 		font-size: 2em;
 	}
-	
+
 	#main-content .title h2
 	{
 		font-weight: bold;
@@ -637,7 +640,6 @@
 	{
 		text-align: center;
 		color: rgba(0,0,0,.5);
-        
 	}
 
 /*********************************************************************************/
@@ -685,11 +687,13 @@
     }
 
     tr{
-        border-bottom: 1px; 
+        border-bottom: 1px;
     }
 
-    tr:hover {background-color: #f5f5f5;}
-	  
+    tr:hover {
+		background-color: #f5f5f5;
+	}
+
 table#t01 tr:nth-child(even) {
 		background-color: #eee;
 	  }
@@ -709,9 +713,8 @@ table#t01 tr:nth-child(even) {
 		padding: 5px;
         width: 80%;
         display: inline-block;
-          
 	  }
-	  
+
 	  .myproyectlink:hover, .myproyectlink:active {
 		background-color: #1e55c2;
 	  }
@@ -733,7 +736,7 @@ table#t01 tr:nth-child(even) {
 		text-decoration: none;
 		display: inline-block;
 	  }
-	  
+
 	  .proyectlink:hover, .proyectlink:active {
 		background-color: #1e55c2;
 	  }
@@ -744,7 +747,7 @@ table#t01 tr:nth-child(even) {
 	background-color: white;
 	height: 500px;
 }
-	  
+
 #proyectosList{
 	background-color: white;
 	color: black;
