@@ -664,26 +664,33 @@
 		align-items: center;
 	}
 
-	.proyectlink{
-		
-	}
+    .proyectlink{
 
-	table {
-		width:100%;
-	  }
-	  table, th, td {
-		border: 0px solid black;
-		border-collapse: collapse;
-	  }
-	  th, td {
-		padding: 20px;
-		text-align: center;
-	  }
+    }
 
-tr{
-	border-bottom: 1px;
-}
-	  table#t01 tr:nth-child(even) {
+    table {
+        width:80%;
+        margin: 0 auto;
+    }
+
+    table, th, td {
+        border: 0px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr{
+        border-bottom: 1px; 
+    }
+
+    tr:hover {background-color: #f5f5f5;}
+	  
+table#t01 tr:nth-child(even) {
 		background-color: #eee;
 	  }
 	  table#t01 tr:nth-child(odd) {
@@ -700,6 +707,9 @@ tr{
 		color: white;
 		text-decoration: none;
 		padding: 5px;
+        width: 80%;
+        display: inline-block;
+          
 	  }
 	  
 	  .myproyectlink:hover, .myproyectlink:active {
@@ -738,6 +748,7 @@ tr{
 #proyectosList{
 	background-color: white;
 	color: black;
+    padding-bottom: 5em;
 }
 
 #proyectosList h1{
