@@ -24,7 +24,7 @@
     <script>
         const buttonSalir = document.getElementById('clickMe');
         const myFunction = () => {
-          location.replace("http://127.0.0.1:8000/");
+          location.replace("{% url 'tusproyectos' User %}");
         }
-      </script>
+    </script>
 {% endblock  %}

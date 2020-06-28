@@ -31,6 +31,5 @@ class Proyect(models.Model):
 class Patron(models.Model):
     proyecto  = models.ForeignKey(Proyect, verbose_name = ("Proyecto"), on_delete=models.CASCADE)
     patron = models.ForeignKey(User, verbose_name = ("Patron"), on_delete=models.CASCADE)
-
-
-
+    money = models.FloatField(default = 0)
+    date = models.DateTimeField(default = datetime.now())

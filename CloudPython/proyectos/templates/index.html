@@ -27,7 +27,7 @@
 		<div class="boxA">
 			<h2>{{proys.0.name}}</h2>
 			{{proys.0.description|safe }}
-			
+
 		</div>
 		<div class="boxB">
 			<h2>{{proys.1.name}}</h2>
@@ -38,7 +38,7 @@
 			{{proys.2.description|safe }}
 		</div>
 	</div>
-	
+
 	<div id="three-column" class="container">
 		<div class="boxA">
 			<a href="{% if User %}{% url 'proyectoLoged' User proys.0.id%}{% else %}{% url 'proyecto' proys.0.id%}{% endif %}" class="button button-alt">More Info</a>
@@ -60,7 +60,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <ul class="actions">
                 <li><a href="{% if User %}{% url 'newproyect' User%}{% else %}{% url 'login' %}{% endif %}" class="button">Arma una vaquita</a></li>
-            </ul>								
+            </ul>
         </div>
     </div>
 {% endblock  %}

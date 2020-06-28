@@ -18,7 +18,26 @@
     <hr>
     <h2>Donacione que has hecho</h2>
     <div>
-        {% for proyect in Proyects %}<p>Nombre: {{proyect.name}}</p> {% empty %}<h3>Todavia no has apoyado ningun proyecto</h3>{% endfor %}
+        <table>
+            <thead>
+                <th>Nombre</th>
+                <th>Monto</th>
+                <th>Fecha</th>
+                <th>Enlace</th>
+            </thead>
+            <tbody>
+                {% for proyect in Proyects %}
+                    <tr>
+                        <td>{{proyect.0.name}}</td>
+                        <td>{{proyect.1}}</td>
+                        <td>{{proyect.2}}</td>
+                        <td><a class = "myproyectlink" href="{% url 'proyectoLoged' User proyect.0.id %}" >Ve al poryecto</a></td>
+                    </tr>
+                {% empty %}
+                    <h3>Todavia no has apoyado ningun proyecto</h3>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <a class = "proyectlink" href ="{% url 'index'%}">Cerrar sesion<a/>
 

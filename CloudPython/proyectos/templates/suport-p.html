@@ -19,15 +19,22 @@
           <div class = "warn">
             <strong>{{message}}</strong><br>
           </div>
-          
+
     {% endif %}
     {% csrf_token %}
     {{form}}
 
     <div class="clearfix">
-		<button id="clickMe" type="button" value="clickme" onclick="cancel_signup();" class="cancelbtn">Cancelar</button>
+		<button id="clickMe" type="button" value="clickme" onclick="myFunction()" class="cancelbtn">Cancelar</button>
 		<!-- <button onclick="window.location.href='/index.html'" class="cancelbtn">Cancelar</button> -->
         <button type="submit"  class="signupbtn">Apoyar</button>
     </div>
+
+    <script>
+        const buttonSalir = document.getElementById('clickMe');
+        const myFunction = () => {
+          location.replace("{% url 'proyectosLoged' user %}");
+        }
+    </script>
 
 {% endblock content %}

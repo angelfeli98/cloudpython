@@ -35,7 +35,7 @@ def yourProyects(request, User):
         if letra.isdigit():
             aux += letra
 
-    userOwner_id = int(aux) 
+    userOwner_id = int(aux)
     proyects = Proyect.objects.filter(userOwner_id = userOwner_id)
     if request.GET:
         user = request.GET
@@ -46,7 +46,7 @@ def yourProyects(request, User):
 
 def newproyect(request, User):
     form = ProyectoSave()
-    
+
     return render(request, 'newproyect.html', {
         'form' : form,
         'User' : User
@@ -58,11 +58,11 @@ def savePoryect(request, User):
         if letra.isdigit():
             aux += letra
 
-    userOwner_id = int(aux) 
+    userOwner_id = int(aux)
 
     if request.POST:
         try:
-            name = request.POST['name']  
+            name = request.POST['name']
             goal = request.POST['goal']
             deadline = request.POST['deadline']
             description = request.POST['description']
@@ -70,10 +70,10 @@ def savePoryect(request, User):
             category_id  = request.POST['category']
             actual = 0
             deadline = datetime.strptime(deadline, '%Y-%m-%d').date()
-        
+
 
             data = Proyect(
-                name = name,  
+                name = name,
                 goal = goal,
                 deadline = deadline,
                 description = description,
@@ -86,7 +86,7 @@ def savePoryect(request, User):
             data.save()
 
             proyects = Proyect.objects.filter(userOwner_id = userOwner_id,)
-            
+
             return render(request, 'yourproyects.html', {
                 'User' : User,
                 'proyects' : proyects
@@ -105,24 +105,25 @@ def savePoryect(request, User):
         'form' : form,
         #'User' : user
         })
-        
+
 def formSuport(request, user = '', idP = 0):
     form = SuportProyect()
     aux = ''
     for letra in user:
         if letra.isdigit():
             aux += letra
-    idUser = int(aux) 
-    
+    idUser = int(aux)
+
     userdata = User.objects.get(pk = idUser)
     return render(request, 'suport-p.html', {
         'form' : form,
         'User' : userdata,
+        'user' : user,
         'proyect' : idP,
     })
 
 def suportProyect(request, user  = 0, idP = 0):
-    
+
     if request.POST:
         money = request.POST['money']
         userp = User.objects.get(pk = user)
@@ -142,20 +143,21 @@ def suportProyect(request, user  = 0, idP = 0):
                 proyecto.save()
                 beneficiario = User.objects.get(pk = proyecto.userOwner_id)
                 beneficiario.wallet += float(money)
-                beneficiario.save() 
+                beneficiario.save()
                 userp.wallet -= float(money)
                 userp.save()
                 patron = Patron(
                     patron_id = userp.id,
-                    proyecto_id = idP
+                    proyecto_id = idP,
+                    money = money
                 )
                 patron.save()
                 patrons = len(Patron.objects.filter(proyecto_id = idP))
-            
+
                 messages.success(request,'Gracias por apoyar proyectos {}'.format(userp.name))
                 return render(request, 'proyect.html',{
                     'User' : 'sssfcv{}sqaznchdyr'.format(userp.id),
-                    'idP' : idP, 
+                    'idP' : idP,
                     'proyecto' : proyecto,
                     'NoP' : patrons
                 })
@@ -178,9 +180,9 @@ def userInfo(request, user):
     for letra in user:
         if letra.isdigit():
             aux += letra
-    idUser = int(aux) 
-    userinfo = User.objects.get(pk = idUser) 
-    proyectosApoyados = [Proyect.objects.get(pk = proy.proyecto_id) for proy in Patron.objects.filter(patron_id = userinfo.id) ]
+    idUser = int(aux)
+    userinfo = User.objects.get(pk = idUser)
+    proyectosApoyados = [(Proyect.objects.get(pk = proy.proyecto_id), proy.money, proy.date) for proy in Patron.objects.filter(patron_id = userinfo.id) ]
     return render(request, 'user-info.html', {
         'User' : 'sssfcv{}sqaznchdyr'.format(userinfo.id),
         'Userinfo' : userinfo,
