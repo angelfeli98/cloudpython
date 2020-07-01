@@ -28,4 +28,11 @@
 		<!-- <button onclick="window.location.href='/index.html'" class="cancelbtn">Cancelar</button> -->
         <button type="submit" action = "{% url 'index' %}" class="signupbtn">Sign Up</button>
       </div>
+	  <script>
+		const btn = document.querySelector('#clickMe');
+
+		btn.addEventListener('click', () => {
+			location.replace("http://127.0.0.1:8000/");
+		})
+	  </script>
 {% endblock  %}
