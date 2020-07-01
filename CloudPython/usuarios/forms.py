@@ -5,12 +5,13 @@ from django.core import validators
 class UsuariosForm(forms.Form):
 
     user = forms.EmailField(
-        label = "Usuario:",
+        label = "Correo electrónico:",
         max_length = 50, 
         required=True,
         )
 
     name = forms.CharField(
+        label = "Nombre de usuario (Nickname):",
         max_length = 50, 
         required = True
     )

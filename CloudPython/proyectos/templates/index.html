@@ -11,16 +11,19 @@
 			<h2>Proyectos que valen la pena</h2>
 			<span class="byline">Empieza una campaña hoy mismo.</span>
 		</div>
-		<ul class="actions">
-			<li><a href="{% if User %}{% url 'newproyect' User%}{% else %}{% url 'login' %}{% endif %}" class="button">Iniciar Campaña</a></li>
-		</ul>
+        
+        <div id="homeButtonContainer">
+            <ul class="actions">
+                <li><a href="{% if User %}{% url 'newproyect' User%}{% else %}{% url 'login' %}{% endif %}" class="button">Iniciar Campaña</a></li>
+            </ul>
+        </div>
 	</div>
 {% endblock  %}
 
 {% block content %}
     <div id="wrapper">
 	<div id="three-column" class="container">
-		<div class="title">
+		<div class="main-header">
 			<h2>Encuentra una campaña cerca de ti...</h2>
 			<span class="byline">Estas son algunas campañas populares cerca de tu ubicación.</span>
 		</div>
@@ -41,13 +44,13 @@
 
 	<div id="three-column" class="container">
 		<div class="boxA">
-			<a href="{% if User %}{% url 'proyectoLoged' User proys.0.id%}{% else %}{% url 'proyecto' proys.0.id%}{% endif %}" class="button button-alt">More Info</a>
+			<a href="{% if User %}{% url 'proyectoLoged' User proys.0.id%}{% else %}{% url 'proyecto' proys.0.id%}{% endif %}" class="button button-alt">Más Información</a>
 		</div>
 		<div class="boxB">
-			<a href="{% if User %}{% url 'proyectoLoged' User proys.1.id%}{% else %}{% url 'proyecto' proys.1.id%}{% endif %}" class="button button-alt">More Info</a>
+			<a href="{% if User %}{% url 'proyectoLoged' User proys.1.id%}{% else %}{% url 'proyecto' proys.1.id%}{% endif %}" class="button button-alt">Más Información</a>
 		</div>
 		<div class="boxC">
-			<a href="{% if User %}{% url 'proyectoLoged' User proys.2.id%}{% else %}{% url 'proyecto' proys.2.id %}{% endif %}" class="button button-alt">More Info</a>
+			<a href="{% if User %}{% url 'proyectoLoged' User proys.2.id%}{% else %}{% url 'proyecto' proys.2.id %}{% endif %}" class="button button-alt">Más Información</a>
 		</div>
 	</div>
     </div>

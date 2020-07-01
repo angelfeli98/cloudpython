@@ -46,8 +46,10 @@
                 <h2>¿No encontraste nada? Arma tu vaquita.</h2>
                 <span class="byline">Personas de todo el mundo juntaron dinero para su proyecto.</span>
             </div>
-                <li><a href="{% if User %}{% url 'newproyect' User%}{% else %}{% url 'login' %}{% endif %}" class="button">Empieza una campaña</a></li>
+            <ul class="actions">
+                <li><a href="{% if User %}{% url 'newproyect' User%}{% else %}{% url 'login' %}{% endif %}" class="button">Arma una vaquilla</a></li>
             </ul>
         </div>
     </div>
+
 {% endblock %}

@@ -8,40 +8,46 @@
 
 {% block content %}
 
-<div class = "main-project-container">
-    <div class="title">
-		<h2>{{proyecto.name}}</h2>
-		<span class="byline">Ayuda a {{Owner.name}} con su proyecto</span>
-	</div>
+    <div id="wrapper">
+        
+        <div id="main-content" class = "container">
+            
+            <div class="main-header">
+                <h2>{{proyecto.name}}</h2>
+                <span class="byline">Ayuda a {{Owner.name}} con su proyecto</span>
+            </div>
     
-	<div class="container-proyecto-left">
-        
-    <div>
-        <img class = "image-centered" src="{% static 'images/imagen_proyecto1.png' %}">
-	</div>
-        {{proyecto.description|safe}}
-	</div>	
-    
-    <div class="container-proyecto-right">
-	<div class="title">
-		<h3>MX ${{proyecto.actual}}</h3>
-		<span class="byline-2">De ${{proyecto.goal}}</span>
-	</div>
-        
-    <div class="title">
-		<h3>{{NoP}}</h3>
-		<span class="byline-2">patrocinadores</span>
-	</div>
-        
-    <div class="title">
-		<h3>{{ proyecto.deadline }}</h3>
-        <span class="byline-2">Fecha limite</span>
-	</div>
-        
-    <div>
-        <a href="{% if User %}{% if Mine %}{% else %}{% url 'formsuport' User proyecto.id%}{% endif %}{% else %}{% url 'login' %}{% endif %}" class="button button-alt">{% if Mine %}Monitoriza{% else %}Apoya este proyecto{% endif %}</a>
-	</div>							
-        
-        
-</div>
+            <div class="container-proyecto-left">
+
+                <div>
+                    <img class = "image-centered" src="{% static 'images/projectmngmt.png' %}">
+                </div>
+                
+                <div class = "descripción-proyecto">
+                    {{proyecto.description|safe}}
+                </div>
+            </div>	
+
+            <div class="container-proyecto-right">
+                <div class="title">
+                    <h3 id = "info-proyecto">MX ${{proyecto.actual}}</h3>
+                    <h4 class="side-info-proyecto">De ${{proyecto.goal}}</h4>
+                </div>
+
+                <div class="title">
+                    <h3>{{NoP}}</h3>
+                    <h4 class="side-info-proyecto">patrocinadores</h4>
+                </div>
+
+                <div class="title">
+                    <h3>{{ proyecto.deadline }}</h3>
+                    <h4 class="side-info-proyecto">Fecha limite</h4>
+                </div>
+
+                <div>
+                    <a href="{% if User %}{% if Mine %}{% else %}{% url 'formsuport' User proyecto.id%}{% endif %}{% else %}{% url 'login' %}{% endif %}" class="button button-alt">{% if Mine %}Monitoriza{% else %}Apoya este proyecto{% endif %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock  %}

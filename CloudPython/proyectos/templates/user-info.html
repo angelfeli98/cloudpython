@@ -6,39 +6,49 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Tu Perfil</h1>
-    <div>
-        <h2>Correo: </h2><p>{{Userinfo.user}}</p>
-        <h2>Nombre: </h2><p>{{Userinfo.name}}</p>
-        <h2>Saldo actual:</h2><p>${{Userinfo.wallet}}</p>
-        <h2>Foto: </h2> {% if Userinfo.photo %}<img src = "{{Userinfo.photo}}">{% else %}<p>No tienes niguna foto</p>{% endif %} 
-    </div>
-
-
-    <hr>
-    <h2>Donacione que has hecho</h2>
-    <div>
-        <table>
-            <thead>
-                <th>Nombre</th>
-                <th>Monto</th>
-                <th>Fecha</th>
-                <th>Enlace</th>
-            </thead>
-            <tbody>
-                {% for proyect in Proyects %}
-                    <tr>
-                        <td>{{proyect.0.name}}</td>
-                        <td>{{proyect.1}}</td>
-                        <td>{{proyect.2}}</td>
-                        <td><a class = "myproyectlink" href="{% url 'proyectoLoged' User proyect.0.id %}" >Ve al poryecto</a></td>
-                    </tr>
-                {% empty %}
-                    <h3>Todavia no has apoyado ningun proyecto</h3>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <a class = "proyectlink" href ="{% url 'index'%}">Cerrar sesion<a/>
+    <div id="wrapper">
+        <div id="user-info-container">
+            <h2>Tu Perfil</h2>
+            <h2>Nombre: </h2><p>{{Userinfo.name}}</p>
+            <h2>Correo electrónico:  </h2><p>{{Userinfo.user}}</p>
+            <h2>Saldo actual:</h2><p>${{Userinfo.wallet}}</p>
+            <h2>Foto: </h2> 
+            {% if Userinfo.photo %}
+                <img src = "{{Userinfo.photo}}">
+            {% else %}
+                <p>No tienes niguna foto</p>
+            {% endif %} 
+            
+            
+            <hr>
+                
+            <div>
+                {% if Proyects %}
+                    <h2 id = 'titulo-centrado'>Estos son los proyectos que has apoyado...</h2>
+                    <table>
+                        <thead>
+                            <th>Nombre</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                            <th>Enlace</th>
+                        </thead>
+                        <tbody>
+                            {% for proyect in Proyects %}
+                                <tr>
+                                    <td>{{proyect.0.name}}</td>
+                                    <td>{{proyect.1}}</td>
+                                    <td>{{proyect.2}}</td>
+                                    <td><a id = "link-in-table" class = "myproyectlink" href="{% url 'proyectoLoged' User proyect.0.id %}" >Ir al poryecto</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                
+                {% endif %}
+            </div>
+        </div> 
+            
+    </div> 
 
 {% endblock content %}

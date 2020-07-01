@@ -26,11 +26,12 @@
 
 	.proyectlink{
 		display: table;
-		margin: 0 auto;	
-		margin: 0px 0px 0px 875px;
+		margin: 0 auto;
 	}
 
 	.procontainer{
+        margin-top: 3em;
+        margin-bottom: 3em;
 		width: 100%;
 	}
 
@@ -155,13 +156,14 @@
 	.image-centered
 	{
 		display: block;
-		margin: 0 0 2em 0;
+		margin:auto;
+        width: 100%;
 	}
 	
 	.image-centered img
 	{
 		margin: 0 auto;
-		width: auto;
+		
 	}
 
 /*********************************************************************************/
@@ -240,7 +242,7 @@
 		display: inline-block;
 		padding: 1em 2em 1em 2em;
 		letter-spacing: 0.10em;
-		margin-top: 2em;
+		margin-top: 0em;
 		padding: 1.40em 3em;
 		background: #2651a8;
 		border-radius: 6px;
@@ -248,6 +250,7 @@
 		font-weight: 700;
 		font-size: 1em;
 		color: #FFF;
+        width: 80%;
 	}
 	
 	.button-alt
@@ -330,9 +333,28 @@
 /* Heading Titles                                                                */
 /*********************************************************************************/
 
+    .main-header{
+        padding-bottom:  4em;
+    }
+
+    .main-header h2
+	{
+		font-size: 2.7em;
+        color: rgba(0,0,0,0.8);
+	}
+
+    .main-header .byline
+	{
+        font-size: 1.5em;
+		text-align: center;
+		color: rgba(0,0,0,.5);
+	}
+
+
+
 	.title
 	{
-		margin-bottom: 3em;
+		margin-bottom: 1em;
 	}
 	
 	.title h2
@@ -343,6 +365,7 @@
     .title h3
 	{
 		font-size: 2.2em;
+        text-align: left;
 	}
 	
 	.title .byline
@@ -357,6 +380,14 @@
 		color: rgba(255,255,255,0.60);
 	}
 
+    .title h4{
+        color:  rgba(0,0,0,.5);
+        text-align: left;
+        font-family: 'Didact Gothic', sans-serif;
+		font-size: 14pt;
+        font-weight: 200;
+    }
+
 /*********************************************************************************/
 /* Header                                                                        */
 /*********************************************************************************/
@@ -364,7 +395,7 @@
 	#wrapper
 	{
 		position: relative;
-		padding: 5em 0em 7em 0em;
+		padding: 5em 0em 4em 0em;
 		background: #FFF;
 	}
 
@@ -375,7 +406,8 @@
 	#header-wrapper
 	{
 		position: relative;
-		padding: 1em 0em 0em 0em;
+		padding: 0em 0em 0em 0em;
+        padding-bottom: 0em;
 		background: #111111 url(../images/header-bg.jpg) no-repeat center;
 		background-size: cover;
 	}
@@ -383,7 +415,7 @@
 	#header
 	{
 		position: relative;
-		padding: 5em 0em;
+		padding: 4.5em 0em;
 	}
 
 /*********************************************************************************/
@@ -464,6 +496,7 @@
 	#banner
 	{
 		padding-top: 7em;
+        padding-bottom: 8em;
 		text-align: center;
 	}
 	
@@ -615,6 +648,11 @@
 /* main-content                                                                      */
 /*********************************************************************************/
 
+    
+    #main-content .title
+	{
+		margin-bottom: 4em;
+	}
 
     #main-content
 	{
@@ -642,16 +680,60 @@
 		color: rgba(0,0,0,.5);
 	}
 
+    #user-info-container
+	{
+		width: 1200px;
+        margin: auto;
+        text-align: left;
+		color: rgba(0,0,0,.5);
+	}
+
+    #datos-user{
+        width: 30%;
+        float: left;
+    }
+
+    #user-donations{
+        width: 70%;
+        float: right;
+    }
+
+    #titulo-centrado{
+        margin-top: 2em;
+        margin-bottom: 1em;
+        text-align: center;
+    }
+
+#link-in-table{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 /*********************************************************************************/
 /* Otro                                                                     */
 /*********************************************************************************/
 
+    #homeButtonContainer{
+        margin-bottom: 5em;
+
+    }
+
+    .descripción-proyecto{
+        margin-top: 2em;
+        font-size: 1.2em;
+    }
 
     #container-proyecto-right .title h2
 	{
 		font-weight: bold;
 		color: red;
 	}
+
+    #menu-categorias{
+        margin-top: 3em;
+    }
 
 
 	/* Poryectos */
@@ -662,8 +744,8 @@
 	}
 
 	#linkP{
+        margin-top: 3em;
 		height: 100px;
-		align-items: center;
 	}
 
     .proyectlink{
@@ -710,9 +792,6 @@ table#t01 tr:nth-child(even) {
 		background-color: #2651a8;
 		color: white;
 		text-decoration: none;
-		padding: 5px;
-        width: 80%;
-        display: inline-block;
 	  }
 
 	  .myproyectlink:hover, .myproyectlink:active {
@@ -720,12 +799,12 @@ table#t01 tr:nth-child(even) {
 	  }
 
 	.headerP{
-		height: 425px;
+        margin-top: 0em;
+		margin-bottom: 0em;
 	}
 
 	.headerP h1, h3{
-		padding: 25px;
-		text-align: center;
+		padding-top: 0em;
 	}
 
 	.proyectlink:link, .proyectlink:visited {
@@ -734,7 +813,8 @@ table#t01 tr:nth-child(even) {
 		padding: 14px 25px;
 		text-align: center;
 		text-decoration: none;
-		display: inline-block;
+		display: block;
+        width: 20%;
 	  }
 
 	  .proyectlink:hover, .proyectlink:active {

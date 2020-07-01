@@ -7,38 +7,51 @@
 {% endblock  %}
 
 {% block content %}
-    <div class = "headerP">
-        <h1>Tus ideas, tus metas, tus proyectos</h1>
-        {% if proyects %}
-            <div class = "procontainer">
-                <table class = "proyectos">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Meta</th>
-                        <th>Actual</th>
-                        <th>Pagina</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for proyect in proyects %}
-                <tr>
-                    <td>{{proyect.name}}</td>
-                    <td>{{proyect.goal}}</td>
-                    <td>{{proyect.actual}}</td>
-                    <td><a class = "myproyectlink" href ="{% url 'proyectoLoged' User proyect.id%}">MONITORIZAR<a/></td>
-                <tr>
-                {% endfor %}
-                <tbody>
-                </table>
-            </div>
-        {% else %}
-        <h1>Todavia no tienes ningun proyecto</h1>
-        <h3>No esperes para compartir tus ideas</h3>
-        {% endif %}
-    </div>
-    <div id = "linkP">
-        <a class = "proyectlink" href ="{% url 'newproyect' User%}">Crea un proyecto<a/>
+    <div id="wrapper">
+        
+        <div id="main-content" class = "container">
 
+            {% if proyects %}
+                <div class="title">
+                    <h2>Tus ideas, tus metas, tus proyectos</h2>
+                    <span class="byline">Dale rienda suelta a tus ideas.</span>
+                </div>
+
+                <div class = "procontainer">
+                    <table class = "proyectos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Meta</th>
+                            <th>Actual</th>
+                            <th>Pagina</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for proyect in proyects %}
+                    <tr>
+                        <td>{{proyect.name}}</td>
+                        <td>{{proyect.goal}}</td>
+                        <td>{{proyect.actual}}</td>
+                        <td><a id = "link-in-table" class = "myproyectlink" href ="{% url 'proyectoLoged' User proyect.id%}">Ir al proyecto<a/></td>
+                    <tr>
+                    {% endfor %}
+                    <tbody>
+                    </table>
+                </div>
+            {% else %}
+                        
+                <div class="title">
+                    <h2>No has iniciado ninguna campaña.</h2>
+                    <span class="byline">=(</span>
+                </div>
+
+            {% endif %}
+        </div>
+                    
+        <div id = "linkP">
+            <a class = "proyectlink" href ="{% url 'newproyect' User%}">Crea un proyecto<a/>
+        </div>
+            
     </div>
 {% endblock  %}
